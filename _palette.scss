@@ -32,11 +32,34 @@ Standard colours (white and black) should be referenced directly without the pal
 ```html_example
 <div data-styleguide-palette></div>
 */
+@import "../config.helpers/_helpers";
+@import "../tools.map-deep-get-set/_map-deep-get-set.scss";
+@import "../tools.parse-color/parse-color";
+
+$__palettes: () !global;
+
+@mixin load-palette($palettes-map) {
+  @each $palette, $shades in $palettes-map {
+      @each $shade, $value in $shades {
+          $parsed: parse-color($value);
+          $parsed: $value;
+          $palettes-map: map-deep-set($palettes-map, $palette $shade, $parsed);
+      }
+  }
+
+  $__palettes: $palettes-map !global;
+}
+
 
 @function palette($color, $tone: 'base') {
     $color: quote($color);
-    $palettes: global-config('palettes');
-    $palette: map-get-if-exists($palettes, $color);
+
+    $palette: map-get-if-exists($__palettes, $color);
     $value: map-get-if-exists($palette, $tone);
-    @return $value;
+
+    @return #{$value};
 }
+
+// @TODO how to load this when using eyeglass? via fn call?
+@import "../../config/palettes.yml";
+@include load-palette($palettes);
