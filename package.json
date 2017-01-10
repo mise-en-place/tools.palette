@@ -1,0 +1,24 @@
+{
+  "name": "mise-en-place-tools-palette",
+  "version": "1.0.0",
+  "description": "Mise-en-place Palette Tool",
+  "main": "sass/_palette.scss",
+  "eyeglass": {
+    "needs": "^1.0.0",
+    "exports": "eyeglass-exports.js",
+    "name": "palette"
+  },
+  "keywords": [
+    "sass",
+    "mise-en-place"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mise-en-place/tools.palette.git"
+  },
+  "author": "Kind",
+  "license": "MIT",
+  "devDependencies": {
+    "mise-en-place-map-deep-get-set": "1.0.0"
+  }
+}
