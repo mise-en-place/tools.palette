@@ -32,9 +32,21 @@ Standard colours (white and black) should be referenced directly without the pal
 ```html_example
 <div data-styleguide-palette></div>
 */
-@import "../config.helpers/_helpers";
-@import "../tools.map-deep-get-set/_map-deep-get-set.scss";
+// @import "../config.helpers/helpers";
+// @import "../tools.map-deep-get-set/stylesheets/map-deep-get-set";
+@import "tools.map-deep-get-set";
 @import "../tools.parse-color/parse-color";
+
+
+@function map-get-if-exists($map, $key){
+    @if map-has-key($map, $key) {
+        @return map-get($map, $key);
+    }
+    @else {
+        @error "#{$map} has no key named '#{$key}'";
+    }
+}
+
 
 $__palettes: () !global;
 
