@@ -22,6 +22,6 @@
   "dependencies": {
     "mep-tools.parse-color": "github:mise-en-place/tools.parse-color",
     "mep-tools.map-deep-get-set": "github:mise-en-place/tools.map-deep-get-set",
-    "mep-tools.map-get-if-exists": "github:mise-en-place/tools.map-get-if-exists",
+    "mep-tools.map-get-if-exists": "github:mise-en-place/tools.map-get-if-exists"
   }
 }
