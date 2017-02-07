@@ -1,6 +1,11 @@
 // ==========================================================================
 // COLOR PALETTE FUNCTION
 // ==========================================================================
+
+@import "tool-parse-color";
+@import "tool-map-deep-get-set";
+@import "tool-map-get-if-exists";
+
 // Generates color values for other modules.
 //
 // Grabs the Sass source map $palette and gets color value from color key.
@@ -32,11 +37,6 @@ Standard colours (white and black) should be referenced directly without the pal
 ```html_example
 <div data-styleguide-palette></div>
 */
-// @import "../config.helpers/helpers";
-// @import "../tools.map-deep-get-set/stylesheets/map-deep-get-set";
-@import "tools.map-deep-get-set";
-@import "../tools.parse-color/parse-color";
-
 
 @function map-get-if-exists($map, $key){
     @if map-has-key($map, $key) {
@@ -73,5 +73,5 @@ $__palettes: () !global;
 }
 
 // @TODO how to load this when using eyeglass? via fn call?
-@import "../../config/palettes.yml";
+// @import "../../config/palettes.yml";
 @include load-palette($palettes);
