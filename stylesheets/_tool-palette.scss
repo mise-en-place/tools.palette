@@ -21,21 +21,26 @@
 
 /*doc
 ---
-title: Colour palettes
+title: Colour palette
 name: colors
 category: config
 ---
 
 Colors are accessed via the `palette()` function, with the tone as the second (optional) parameter, like so:
 
-`.widget {
+```
+.widget {
     color: palette(grey, dark);
 }`
-
+```
 Standard colours (white and black) should be referenced directly without the palette function like `.widget { color: black; }`
 
 ```html_example
 <div data-styleguide-palette></div>
+```
+
+**NB** You need to call `@include load-palette($palettes);` in your main Sass file to load the palette before using this fn.
+
 */
 
 @function map-get-if-exists($map, $key){
@@ -48,30 +53,27 @@ Standard colours (white and black) should be referenced directly without the pal
 }
 
 
-$__palettes: () !global;
+$__palette: () !global;
 
-@mixin load-palette($palettes-map) {
-  @each $palette, $shades in $palettes-map {
+@mixin load-palette($palette-map) {
+  @each $palette, $shades in $palette-map {
       @each $shade, $value in $shades {
           $parsed: parse-color($value);
           $parsed: $value;
-          $palettes-map: map-deep-set($palettes-map, $palette $shade, $parsed);
+          $palette-map: map-deep-set($palette-map, $palette $shade, $parsed);
       }
   }
 
-  $__palettes: $palettes-map !global;
+  $__palette: $palette-map !global;
 }
 
 
 @function palette($color, $tone: 'base') {
     $color: quote($color);
 
-    $palette: map-get-if-exists($__palettes, $color);
+    $palette: map-get-if-exists($__palette, $color);
     $value: map-get-if-exists($palette, $tone);
 
     @return #{$value};
 }
 
-// @TODO how to load this when using eyeglass? via fn call?
-// @import "../../config/palettes.yml";
-@include load-palette($palettes);
