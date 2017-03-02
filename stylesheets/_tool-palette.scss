@@ -74,6 +74,6 @@ $__palette: () !global;
     $palette: map-get-if-exists($__palette, $color);
     $value: map-get-if-exists($palette, $tone);
 
-    @return #{$value};
+    @return parse-color($value);
 }
 
