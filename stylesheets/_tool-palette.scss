@@ -59,7 +59,7 @@ $__palette: () !global;
   @each $palette, $shades in $palette-map {
       @each $shade, $value in $shades {
           $parsed: parse-color($value);
-          $parsed: $value;
+
           $palette-map: map-deep-set($palette-map, $palette $shade, $parsed);
       }
   }
