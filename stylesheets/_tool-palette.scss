@@ -48,7 +48,7 @@ Standard colours (white and black) should be referenced directly without the pal
 }
 
 
-$__palettes: () !global;
+$__palettes: () !default !global;
 
 @mixin load-palette($palettes-map) {
   @each $palette, $shades in $palettes-map {
