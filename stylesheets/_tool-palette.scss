@@ -6,19 +6,6 @@
 @import "tool-map-deep-get-set";
 @import "tool-map-get-if-exists";
 
-// Generates color values for other modules.
-//
-// Grabs the Sass source map $palette and gets color value from color key.
-//
-// Example:
-//
-// a {
-//     color: palette(yellow, light);
-// }
-//
-// The map variable can be set in config/colors/
-//
-
 /*doc
 ---
 title: Colour palettes
@@ -34,6 +21,7 @@ Colors are accessed via the `palette()` function, with the tone as the second (o
 
 Standard colours (white and black) should be referenced directly without the palette function like `.widget { color: black; }`
 
+Before using you need to call `load-palette()`, passing a map of the colours to load.
 ```html_example
 <div data-styleguide-palette></div>
 */
@@ -72,6 +60,6 @@ $__palettes: () !default !global;
     @return #{$value};
 }
 
-// @TODO how to load this when using eyeglass? via fn call?
-// @import "../../config/palettes.yml";
-@include load-palette($palettes);
+@function get-palette() {
+    @return $__palette;
+}
