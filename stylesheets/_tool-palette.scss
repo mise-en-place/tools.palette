@@ -77,3 +77,7 @@ $__palette: () !global;
     @return parse-color($value);
 }
 
+@function get-palette() {
+    @return $__palette;
+}
+
