@@ -1,5 +1,5 @@
 {
-  "name": "mep-tools.palette",
+  "name": "@mise-en-place/tools.palette",
   "version": "2.0.0",
   "description": "Palette Tool",
   "main": "stylesheets/_tool-palette.scss",
@@ -14,8 +14,8 @@
   "author": "Kind",
   "license": "MIT",
   "dependencies": {
-    "mep-tools.parse-color": "github:mise-en-place/tools.parse-color",
-    "mep-tools.map-deep-get-set": "github:mise-en-place/tools.map-deep-get-set",
-    "mep-tools.map-get-if-exists": "github:mise-en-place/tools.map-get-if-exists"
+    "@mise-en-place/tools.parse-color": "~3.0.0",
+    "@mise-en-place/tools.map-deep-get-set": "~3.0.0",
+    "@mise-en-place/tools.map-get-if-exists": "~3.0.0"
   }
 }
